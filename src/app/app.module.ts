@@ -13,6 +13,9 @@ import { ContentComponent } from './content/content.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app.routing.module';
 import { ProduitService } from './produit/produit.service';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,18 @@ import { ProduitService } from './produit/produit.service';
     NavbarComponent,
     SidebarComponent,
     ContentComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule
   ],
-  providers: [ProduitMockService, ProduitService],
+  providers: [
+    ProduitMockService,
+    ProduitService,
+    AppService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
