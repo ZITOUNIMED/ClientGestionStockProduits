@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import {ProduitService} from './produit.service';
-import {Produit} from '../shared/produit';
+import {Produit} from '../shared/produit.model';
 
 @Component({
   selector: 'app-produit',
@@ -37,7 +37,7 @@ export class ProduitComponent implements OnInit{
     });
   }
   loadProduits(){
-    this.produitService.getProduits().subscribe(
+    this.produitService.getAll().subscribe(
       data => {this.produits = data},
       error => { console.log('An error was occured.')},
       () => { console.log('loading produits was done.')}
@@ -46,7 +46,7 @@ export class ProduitComponent implements OnInit{
 
   addProduit(){
     const p = this.produitForm.value;
-    this.produitService.addProduit(p).subscribe(
+    this.produitService.add(p).subscribe(
       res => {
         this.initProduit();
         this.loadProduits();
@@ -55,7 +55,7 @@ export class ProduitComponent implements OnInit{
   }
 
   updateProduit(){
-    this.produitService.updateProduit(this.selectedProduit)
+    this.produitService.update(this.selectedProduit)
     .subscribe(
       res => {
         this.initProduit();
@@ -70,7 +70,7 @@ export class ProduitComponent implements OnInit{
   }
 
   deleteProduit(){
-    this.produitService.deleteProduit(this.selectedProduit.id).
+    this.produitService.delete(this.selectedProduit.id).
     subscribe(
       res =>{
         this.selectedProduit = new Produit();

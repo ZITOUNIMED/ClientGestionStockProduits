@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { User } from '../shred/user.model';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.users = this.route.snapshot.data.users;
   }
 
 }

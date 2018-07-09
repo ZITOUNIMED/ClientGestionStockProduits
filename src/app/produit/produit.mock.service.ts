@@ -1,8 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Produit} from '../shared/produit';
+import {Produit} from '../shared/produit.model';
+import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
+
+import { CrudService } from '../shared/crud.service';
 
 @Injectable()
-export class ProduitMockService{
+export class ProduitMockService implements CrudService{
 
   private PRODUITS: Produit[] = [];
 
@@ -15,7 +19,23 @@ export class ProduitMockService{
     this.PRODUITS.push(p3);
   }
 
-  public getProduits(): Produit[]{
-    return this.PRODUITS;
+  getAll(): Observable<any>{
+    return of(this.PRODUITS);
   }
+
+  add(produit): Observable<any>{
+    return of('success');
+  }
+
+  update(produit): Observable<any>{
+    return of('success');
+  }
+
+  delete(id): Observable<any>{
+    return of('success');
+  }
+
+
+
+
 }
