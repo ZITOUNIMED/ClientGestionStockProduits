@@ -36,7 +36,7 @@ export const appRoutes: Routes = [
         component: UserComponent,
         resolve: {
           users: UserResolver
-        }
+        },
         outlet: 'contentOutlet'
       },
     ]
