@@ -1,11 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, AfterViewChecked, Input, ViewChild } from '@angular/core';
+
+import { ChartComponent } from 'angular2-chartjs';
 
 @Component({
   selector: 'app-my-chart',
   templateUrl: './my-chart.component.html',
   styleUrls: ['./my-chart.component.css']
 })
-export class MyChartComponent implements OnInit {
+export class MyChartComponent implements AfterViewChecked {
+
+  @ViewChild('ghraphElement')
+  private ghraphElement: ChartComponent;
 
   @Input()
   type: string = 'bar';
@@ -13,6 +18,7 @@ export class MyChartComponent implements OnInit {
   @Input()
   title: string = 'Titre';
 
+  @Input()
   data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
@@ -26,6 +32,8 @@ export class MyChartComponent implements OnInit {
       }
     ]
   };
+
+  @Input()
   options = {
     responsive: true,
     maintainAspectRatio: false
@@ -33,7 +41,10 @@ export class MyChartComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewChecked() {
+      this.ghraphElement.chart.update();
+
   }
+
 
 }
