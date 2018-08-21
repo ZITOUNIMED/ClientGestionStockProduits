@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, Validators} from '@angular/forms';
 
 import { CrudService } from '../crud.service';
 import { DataModel } from '../data.model';
@@ -28,65 +28,16 @@ export class CrudComponent implements OnInit {
   @Input()
   dataModelList: DataModel[];
 
-  crudForm: FormGroup;
+  crudType = 'sample';
 
-  operation: string = 'add';
-
-  selectedItem: any;
-
-  constructor(private fb: FormBuilder){
-    this.createForm();
+  constructor(){
   }
 
   ngOnInit(){
-    this.init();
   }
 
-  createForm(){
-    this.initForm ? this.crudForm = this.initForm : this.crudForm = this.fb.group({});
-  }
-
-  loadData(){
-    this.service.getAll().subscribe(
-      data => {this.data = data},
-      error => { console.log('An error was occured.')},
-      () => { console.log('loading data was done.')}
-    );
-  }
-
-  add(){
-    const p = this.crudForm.value;
-    this.service.add(p).subscribe(
-      res => {
-        this.init();
-        this.loadData();
-      }
-    );
-  }
-
-  update(){
-    this.service.update(this.selectedItem)
-    .subscribe(
-      res => {
-        this.init();
-        this.loadData();
-      }
-    );
-  }
-
-  init(){
-    this.selectedItem = this.initItem;
-    this.createForm();
-  }
-
-  delete(){
-    this.service.delete(this.selectedItem.id).
-    subscribe(
-      res =>{
-        this.selectedItem = this.initItem;
-        this.loadData();
-      }
-    );
+  dataChanged($event){
+    this.data = this.data.concat($event);
   }
 
 }

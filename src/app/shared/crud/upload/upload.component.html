@@ -1,0 +1,60 @@
+<div class="custom-file">
+  <input type="file"  id="customFile" #fileUploadInput (change)="selectFile($event)" accept=".csv">
+  <label class="custom-file-label" for="customFile">{{fileName ? fileName : 'Choisissez un fichier!'}}</label>
+</div>
+<div class="checkout-wrap">
+  <ul class="checkout-bar">
+    <li [ngClass]="{active: currentStep == 1, visited: currentStep>1}" (click)="selectedStep=1;">Importer un fichier</li>
+    <li [ngClass]="{active: currentStep == 2, visited: currentStep>2}" (click)="selectedStep=2;">Envoyer</li>
+    <li [ngClass]="{active: currentStep == 3, visited: currentStep>3}" (click)="selectedStep=3;">Récupérer les données</li>
+  </ul>
+</div>
+<div [ngSwitch]="selectedStep">
+  <div *ngSwitchCase="1">
+    <div *ngIf="dataArray; else emptyData">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th *ngFor="let dataModel of dataModelListFiltred">{{dataModel.columnReference}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataArray">
+            <td *ngFor="let dataModel of dataModelListFiltred">{{item[dataModel.columnName]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!dataArray">
+      <p>Aucune donnée importée.</p>
+    </div>
+  </div>
+  <div *ngSwitchCase="2">
+    <div *ngIf="!dataSentToServer">
+      <p>Cliquez pour envoyer les données au serveur !</p>
+      <button class="btn btn-default" (click)="sendDataToServer()">Send</button>
+    </div>
+    <div *ngIf="dataSentToServer">
+      <p>L'envoie est terminé.</p>
+    </div>
+  </div>
+  <div *ngSwitchCase="3">
+    <div *ngIf="dataFromServer">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th *ngFor="let dataModel of dataModelList">{{dataModel.columnReference}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataFromServer">
+            <td *ngFor="let dataModel of dataModelList">{{item[dataModel.columnName]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!dataFromServer">
+      <p>Aucune donnée récupérée.</p>
+    </div>
+  </div>
+</div>

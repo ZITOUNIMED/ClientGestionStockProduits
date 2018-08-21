@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
       this.produitsData.labels.push(produit.ref);
       datasetsQuantite.data.push(produit.quantite);
       datasetsPrixUnitaire.data.push(produit.prixUnitaire);
-    })):
+    }));
 
     this.produitsData.datasets.push(datasetsQuantite);
     this.produitsData.datasets.push(datasetsPrixUnitaire);
@@ -60,23 +60,25 @@ export class DashboardComponent implements OnInit {
     this.usersData.labels.push('ROLE_USER');
 
     this.userService.getAll().subscribe(list => {
-      const adminLength = 0;
+      let adminLength = 0;
 
-      list.forEach(user => user.roles.forEach(role => if(role.name == 'ROLE_ADMIN'){
+      list.forEach(user => user.roles.forEach(role => {
+        if(role.name == 'ROLE_ADMIN'){
         adminLength++;
+      }
       }));
 
       datasetsUser.data.push(adminLength);
 
-      const userLength = 0;
-
-      list.forEach(user => user.roles.forEach(role => if(role.name == 'ROLE_USER'){
+      let userLength = 0;
+      list.forEach(user => user.roles.forEach(role => {
+        if(role.name == 'ROLE_USER'){
         userLength++;
+      }
       }));
 
       datasetsUser.data.push(userLength);
-      }
-      );
+
     });
   }
 

@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-lg-7">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th *ngFor="let dataModel of dataModelList">{{dataModel.columnReference}}</th>
+          <th>
+            <button class="btn btn-outline-primary btn-sm" (click)="operation = 'add'; init();">ADD</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td *ngFor="let dataModel of dataModelList">{{item[dataModel.columnName]}}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary" (click)="operation = 'edit'; selectedItem = item;">Edit</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="operation = 'remove'; selectedItem = item;">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header bg-info text-white">
+        {{operation == 'add' ? 'Ajouter' :
+          operation == 'edit' ? 'Modifier' :
+          operation == 'remove' ? 'Supprimer' : ''}}
+      </div>
+      <div class="card-body">
+        <div *ngIf="operation == 'add' || operation == 'edit'">
+          <form [formGroup]="crudForm">
+            <div *ngFor="let dataModel of dataModelList" [ngSwitch]="dataModel.dataType">
+              <div class="form-group" *ngIf="!dataModel.readonly">
+                <label>{{dataModel.columnReference}}:</label>
+                <input *ngSwitchCase="'string'"  type="text" class="form-control" formControlName="{{dataModel.columnName}}"
+                  [(ngModel)]="selectedItem[dataModel.columnName]"/>
+                <input *ngSwitchCase="'number'" type="number" class="form-control" formControlName="{{dataModel.columnName}}"
+                  [(ngModel)]="selectedItem[dataModel.columnName]"/>
+              </div>
+              <!-- <div class="alert alert-danger" *ngIf="produitForm.controls['ref'].invalid &&
+                                          (produitForm.controls['ref'].touched || produitForm.controls['ref'].dirty)">
+                  Référence est obligatoire!
+              </div> -->
+            </div>
+
+            <button class="btn btn-success" [disabled]="crudForm.prestine || crudForm.invalid"
+            (click)="operation == 'add' ? add() : update()">
+                {{ operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : ''}}
+            </button>
+          </form>
+
+        </div>
+        <div *ngIf="operation == 'remove'">
+          <p class="card-title">
+            Référence: {{selectedItem.id}}
+          </p>
+          <p>
+            Voulez-vous supprimer cet élément?
+          </p>
+          <button class="btn btn-success" [disabled]="!selectedItem.id" (click)="delete()">Confirmer</button>
+        </div>
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+  </div>
+  </div>
