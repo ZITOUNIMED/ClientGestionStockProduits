@@ -3,7 +3,7 @@
     <li class="nav-item">
       <a class="nav-link"
         [routerLink]="[{outlets: { contentOutlet: 'dashboard'}}]"
-        *ngIf="hasRoleUser()"
+        *ngIf="hasRoleAdmin()"
         routerLinkActive="active">Dashboard</a>
     </li>
     <li class="nav-item">

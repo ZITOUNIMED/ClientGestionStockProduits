@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { StoreModule } from '@ngrx/store';
+import { ChartModule } from 'angular2-chartjs';
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { XhrInterceptor } from './xhr.interceptor';
 import { UserComponent } from './user/user.component';
 import { principalReducer } from './shared/principal.reducer';
 import { CrudComponent } from './shared/crud/crud.component';
+import { MyChartComponent } from './my-chart/my-chart.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +37,16 @@ import { CrudComponent } from './shared/crud/crud.component';
     LoginComponent,
     HomeComponent,
     UserComponent,
-    CrudComponent
+    CrudComponent,
+    MyChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({principal: principalReducer})
+    StoreModule.forRoot({principal: principalReducer}),
+    ChartModule
   ],
   providers: [
     ProduitMockService,

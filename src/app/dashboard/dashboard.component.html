@@ -1,3 +1,15 @@
-<p>
-  dashboard works!
-</p>
+<div class="row">
+  <div class="col-lg-5">
+    <app-my-chart
+    [type]="'bar'"
+    [title]="'Produits par catégorie'"
+    ></app-my-chart>
+  </div>
+  <div class="col-lg-7">
+    <app-my-chart
+    [type]="'line'"
+    [title]="'Réprésentation linéaire des produits'"
+    >
+    </app-my-chart>
+  </div>
+</div>
