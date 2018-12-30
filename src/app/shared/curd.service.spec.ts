@@ -4,7 +4,7 @@ import { of } from 'rxjs/observable/of';
 
 import { CrudService } from './crud.service';
 
-fdescribe('CrudService', () => {
+describe('CrudService', () => {
   let service: CrudService;
   let httpClientStub;
 
