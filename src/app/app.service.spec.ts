@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
+import { configureTestSuite } from 'ng-bullet';
 
 import { SAVE_PRINCIPAL } from './shared/save.principal.action';
 import { AppService } from './app.service';
@@ -15,7 +16,7 @@ describe('AppService', () => {
   let httpClientStub;
   let storeStub;
 
-  beforeEach(() => {
+  configureTestSuite(() => {
     TestBed.configureTestingModule({
       providers: [
         AppService,
@@ -23,8 +24,7 @@ describe('AppService', () => {
         { provide: Store, useValue: {}},
         { provide: HttpClient, useValue: {}}
       ]
-    })
-    .compileComponents();
+    });
     initStubs();
   });
 
