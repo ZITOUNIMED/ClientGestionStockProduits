@@ -1,13 +1,33 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-export interface CrudService {
-  getAll(): Observable<any>;
+@Injectable()
+export class CrudService {
+  url: string;
 
-  add(produit): Observable<any>;
+  constructor(private http: HttpClient){
 
-  update(produit): Observable<any>;
+  }
 
-  delete(id): Observable<any>;
+  getAll(): Observable<any>{
+    return this.http.get(this.url);
+  }
 
-  addAll(list): Observable<any>;
+  add(entity): Observable<any>{
+    return this.http.post(this.url, entity);
+  }
+
+  update(entity): Observable<any>{
+    return this.http.put(this.url, entity);
+  }
+
+  delete(id): Observable<any>{
+    return this.http.delete(this.url + `/${id}`);
+  }
+
+  addAll(list): Observable<any>{
+    return this.http.post(this.url + '/all', list);
+  }
+
 }
