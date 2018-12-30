@@ -9,11 +9,11 @@ import { AppService } from './app.service';
 
 const createSpy = jasmine.createSpy;
 
-describe('AppService', () => {
+fdescribe('AppService', () => {
   let service: AppService;
-  let cookieServiceStub: CookieService;
-  let httpClientStub: HttpClient;
-  let storeStub: Store;
+  let cookieServiceStub;
+  let httpClientStub;
+  let storeStub;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -112,7 +112,21 @@ describe('AppService', () => {
     });
   });
 
+ describe('logout', () => {
+   it('should unauthenticate and call the callback', () => {
+     // Given
+     service.authenticated = true;
+     let nb = 0;
+     const myCallback = () => { nb = 10;};
 
+     // When
+     service.logout(myCallback);
+
+     // Then
+     expect(service.authenticated).toEqual(false);
+     expect(nb).toEqual(10);
+   });
+ });
 
 
 
