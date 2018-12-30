@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 
 const createSpy = jasmine.createSpy;
 
-fdescribe('AppService', () => {
+describe('AppService', () => {
   let service: AppService;
   let cookieServiceStub;
   let httpClientStub;
