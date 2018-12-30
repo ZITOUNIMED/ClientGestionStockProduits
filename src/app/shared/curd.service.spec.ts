@@ -1,6 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
+import { configureTestSuite } from 'ng-bullet';
 
 import { CrudService } from './crud.service';
 
@@ -8,14 +9,13 @@ describe('CrudService', () => {
   let service: CrudService;
   let httpClientStub;
 
-  beforeEach(() => {
+  configureTestSuite(() => {
     TestBed.configureTestingModule({
       providers: [
         CrudService,
         { provide: HttpClient, useValue: {}}
       ]
-    })
-    .compileComponents();
+    });
     initStubs();
   });
 
