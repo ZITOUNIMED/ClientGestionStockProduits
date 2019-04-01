@@ -1,3 +1,52 @@
+<!-- <mat-toolbar>Gestion du stock des produits</mat-toolbar>
 <div class="container body">
   <router-outlet></router-outlet>
-</div>
+</div> -->
+
+
+<mat-drawer-container class="crm-navigation-bar" [hasBackdrop]="true">
+  <mat-drawer #drawer [mode]="'over'">
+    <mat-nav-list>
+    <!-- <mat-toolbar>
+      <span class="toolbar-filler"></span>
+      <mat-icon aria-label="Side nav toggle icon" (click)="drawer.close()">
+        <i class="fa fa-times"></i>
+      </mat-icon>
+    </mat-toolbar>
+    <h2 matSubheader>
+      <mat-icon matListIcon >
+        <i class="fa fa-book"></i>
+      </mat-icon>
+      Mes documents
+    </h2>
+    <a  mat-list-item (click)="drawer.close()" routerLink="/document">Gérer les documents</a>
+    <h2 matSubheader>
+      <mat-icon matListIcon color="warn">
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </mat-icon>
+      Favoris
+    </h2> -->
+  <!-- <a *ngFor="let document of documents" mat-list-item (click)="drawer.close()" [routerLink]="'/document/' + document.id" routerLinkActive="true">{{document.name}}</a> -->
+</mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar>
+  <!-- <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">
+      <i class="fa fa-align-justify"></i>
+    </mat-icon>
+  </button> -->
+  <span>Tutos Docs</span>
+</mat-toolbar>
+    <div class="container">
+      <!-- <div [hidden]="!showLoadignIcon">
+        <img [src]="'assets/img/loading-transparent.gif'">
+      </div> -->
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

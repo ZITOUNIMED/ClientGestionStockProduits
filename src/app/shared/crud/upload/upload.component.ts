@@ -72,7 +72,7 @@ export class UploadComponent implements OnInit {
     let dataArray = [];
     if(csvRecordsArray && csvRecordsArray.length>2){
       for(let i = 1; i<csvRecordsArray.length; i++){
-        const dataCsv = csvRecordsArray[i].split(";");
+        const dataCsv = null;//csvRecordsArray[i].split(";");
         const dataCrud = {};
         bindArray.forEach(bindItem => {
           dataCrud[bindItem.columnName] = bindItem.dataType == 'number' ? Number(dataCsv[bindItem.index]) : dataCsv[bindItem.index];
@@ -96,7 +96,7 @@ export class UploadComponent implements OnInit {
 
       reader.onload = (data) => {
         let csvData = reader.result;
-        let csvRecordsArray = csvData.split(/\r\n|\n/);
+        let csvRecordsArray = '';//csvData.split(/\r\n|\n/);
         let headers = csvRecordsArray && csvRecordsArray.length>0 ? csvRecordsArray[0].split(";") : [];
         // bind headers with dataModelist
         let bindArray = this.getBindHeadersDataModelListArray(headers);
