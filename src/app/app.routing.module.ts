@@ -17,6 +17,29 @@ export const appRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    children: [
+      {
+        path: 'produit',
+        component: ProductComponent,
+        resolve: {
+          produits: ProductResolver
+        },
+        outlet: 'contentOutlet'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        outlet: 'contentOutlet'
+      },
+      {
+        path: 'user',
+        component: UserComponent,
+        resolve: {
+          users: UserResolver
+        },
+        outlet: 'contentOutlet'
+      },
+    ]
   },
   {
     path: '',

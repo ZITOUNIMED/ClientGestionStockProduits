@@ -15,9 +15,9 @@ export class SidebarComponent implements OnInit {
   constructor(private store: Store<PrincipalState>) { }
 
   ngOnInit() {
-    // this.store.select('principal').subscribe(principal => {
-    //   this.principal = principal;
-    // });
+    this.store.select('principal').subscribe(principal => {
+      this.principal = principal;
+    });
   }
 
   hasRoleUser(){

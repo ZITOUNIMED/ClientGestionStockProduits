@@ -19,7 +19,6 @@
     "@angular/core": "7.2.10",
     "@angular/forms": "7.2.10",
     "@angular/http": "7.2.10",
-    "@angular/material": "^7.3.5",
     "@angular/platform-browser": "7.2.10",
     "@angular/platform-browser-dynamic": "7.2.10",
     "@angular/router": "7.2.10",
