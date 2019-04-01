@@ -10,7 +10,6 @@ import { AppService } from '../shared/service/app.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
 
   credentials = {
@@ -31,12 +30,8 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.appService.authenticate(this.credentials, ()=>{
-      //this.router.navigateByUrl('/home/(contentOutlet:product)');
       this.router.navigate(['/home']);
     });
   }
-
-
-
 
 }

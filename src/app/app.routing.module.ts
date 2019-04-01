@@ -10,41 +10,19 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 
 export const appRoutes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent
+  {  path: 'login',  component: LoginComponent},
+  {  path: 'home',   component: HomeComponent},
+  {  path: '',  redirectTo: '/home',  pathMatch: 'full' },
+  {  path: 'product', component: ProductComponent,
+   resolve: {
+      products: ProductResolver
+    }
   },
-  {
-    path: 'home',
-    component: HomeComponent,
-    children: [
-      {
-        path: 'produit',
-        component: ProductComponent,
-        resolve: {
-          produits: ProductResolver
-        },
-        outlet: 'contentOutlet'
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        outlet: 'contentOutlet'
-      },
-      {
-        path: 'user',
-        component: UserComponent,
-        resolve: {
-          users: UserResolver
-        },
-        outlet: 'contentOutlet'
-      },
-    ]
-  },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+  { path: 'dashboard',  component: DashboardComponent },
+  { path: 'user', component: UserComponent,
+    resolve: {
+      users: UserResolver
+    }
   }
 ];
 

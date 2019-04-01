@@ -9,17 +9,22 @@ import { AppService } from './authentication/shared/service/app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  showHideSideBar: boolean = false;
 
   constructor(private appService: AppService,
               private router: Router){}
 
   ngOnInit(){
     if(!this.appService.authenticated){
-      this.router.navigateByUrl('/login');
+      this.router.navigate(['/login']);
     }
     else {
-        this.router.navigateByUrl('/home');
+      this.router.navigate(['/home']);
     }
+  }
+
+  onShowSideBarChange(showHideSideBar){
+    this.showHideSideBar = showHideSideBar;
   }
 
 }

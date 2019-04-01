@@ -9,8 +9,6 @@ import { UserService } from '../user/shared/service/user.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-
   productsData = {
     labels: [],
     datasets: []

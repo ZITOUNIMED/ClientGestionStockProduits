@@ -6,5 +6,5 @@ import { CrudService } from '../../../shared/crud.service';
   providedIn: 'root'
 })
 export class ProductService extends CrudService{
-  url = '/product';
+  url = '/produit';
 }

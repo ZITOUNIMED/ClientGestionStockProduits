@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent} from './sidebar/sidebar.component';
-import { ContentComponent} from './content/content.component';
-//import { AppRoutingModule } from '../app.routing.module';
 
 
 @NgModule({
-  imports: [],
+  imports: [RouterModule, BrowserModule],
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    ContentComponent
+  ],
+  exports: [
+    NavbarComponent,
+    SidebarComponent,
   ]
 })
 export class AppMenuModule{
