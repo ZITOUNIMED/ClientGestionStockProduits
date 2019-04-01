@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
-import { User } from '../shared/user.model';
+import { User } from './shared/model/user.model';
 import { DataModel } from '../shared/data.model';
-import { UserService } from './user.service';
+import { UserService } from './shared/service/user.service';
 
 @Component({
   selector: 'app-user',

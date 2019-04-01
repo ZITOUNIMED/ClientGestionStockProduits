@@ -4,61 +4,40 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { StoreModule } from '@ngrx/store';
-import { ChartModule } from 'angular2-chartjs';
-
 
 import { AppComponent } from './app.component';
-import { ProduitComponent } from './produit/produit.component';
-import { ProduitMockService } from './produit/produit.mock.service';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { ContentComponent } from './content/content.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app.routing.module';
-import { ProduitService } from './produit/produit.service';
-import { UserService } from './user/user.service';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { AppService } from './app.service';
-import { XhrInterceptor } from './xhr.interceptor';
-import { UserComponent } from './user/user.component';
-import { principalReducer } from './shared/principal.reducer';
-import { CrudComponent } from './shared/crud/crud.component';
-import { MyChartComponent } from './my-chart/my-chart.component';
-import { SampleComponent } from './shared/crud/sample/sample.component';
-import { UploadComponent } from './shared/crud/upload/upload.component';
+import { XhrInterceptor } from './authentication/xhr.interceptor';
+import { principalReducer } from './authentication/shared/principal.reducer';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { DashboardModule} from './dashboard/dashboard.module';
+import { AppMenuModule } from './menu/app.menu.module';
+import { ProductModule } from './product/product.module';
+import { UserModule } from './user/user.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProduitComponent,
-    NavbarComponent,
-    SidebarComponent,
-    ContentComponent,
-    DashboardComponent,
-    LoginComponent,
     HomeComponent,
-    UserComponent,
-    CrudComponent,
-    MyChartComponent,
-    SampleComponent,
-    UploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AuthenticationModule,
     StoreModule.forRoot({principal: principalReducer}),
-    ChartModule
+    DashboardModule,
+    AppMenuModule,
+    ProductModule,
+    UserModule,
+    SharedModule
   ],
   providers: [
-    ProduitMockService,
-    ProduitService,
-    AppService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true},
     CookieService,
-    UserService
   ],
   bootstrap: [AppComponent]
 })

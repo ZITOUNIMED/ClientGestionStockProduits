@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 //
-// import { DashboardComponent } from './dashboard.component';
+// import { NavbarComponent } from './navbar.component';
 //
-// xdescribe('DashboardComponent', () => {
-//   let component: DashboardComponent;
-//   let fixture: ComponentFixture<DashboardComponent>;
+// xdescribe('NavbarComponent', () => {
+//   let component: NavbarComponent;
+//   let fixture: ComponentFixture<NavbarComponent>;
 //
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ DashboardComponent ]
+//       declarations: [ NavbarComponent ]
 //     })
 //     .compileComponents();
 //   }));
 //
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(DashboardComponent);
+//     fixture = TestBed.createComponent(NavbarComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

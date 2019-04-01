@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProduitService } from '../produit/produit.service';
-import { UserService } from '../user/user.service';
+import { ProductService } from '../product/shared/service/product.service';
+import { UserService } from '../user/shared/service/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +9,7 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-
-  produitsData = {
+  productsData = {
     labels: [],
     datasets: []
   };
@@ -21,7 +19,7 @@ export class DashboardComponent implements OnInit {
     datasets: []
   };
 
-  constructor(private produitService: ProduitService, private userService: UserService) { }
+  constructor(private productService: ProductService, private userService: UserService) { }
 
   ngOnInit() {
     const datasetsQuantite = {
@@ -38,14 +36,14 @@ export class DashboardComponent implements OnInit {
       borderColor: 'rgb(255, 99, 132)'
     };
 
-    this.produitService.getAll().subscribe(list=> list.forEach(produit => {
-      this.produitsData.labels.push(produit.ref);
-      datasetsQuantite.data.push(produit.quantite);
-      datasetsPrixUnitaire.data.push(produit.prixUnitaire);
+    this.productService.getAll().subscribe(list=> list.forEach(product => {
+      this.productsData.labels.push(product.ref);
+      datasetsQuantite.data.push(product.quantite);
+      datasetsPrixUnitaire.data.push(product.prixUnitaire);
     }));
 
-    this.produitsData.datasets.push(datasetsQuantite);
-    this.produitsData.datasets.push(datasetsPrixUnitaire);
+    this.productsData.datasets.push(datasetsQuantite);
+    this.productsData.datasets.push(datasetsPrixUnitaire);
 
     const datasetsUser = {
       label: "Roles",
