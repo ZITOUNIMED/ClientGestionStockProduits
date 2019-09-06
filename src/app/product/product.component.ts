@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
 
   productsModel: DataModel[];
 
-  constructor(private productService: ProductService, private fb: FormBuilder, private route: ActivatedRoute){
+  constructor(public productService: ProductService, private fb: FormBuilder, private route: ActivatedRoute){
 
   }
 

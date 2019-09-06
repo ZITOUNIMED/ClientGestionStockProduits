@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent{
+  showHideSideBar = false;
+  onShowSideBarChange(showHideSideBar){
+    this.showHideSideBar = showHideSideBar;
+  }
 }

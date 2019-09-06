@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
   userForm: FormGroup;
 
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private fb: FormBuilder) { }
+  constructor(public userService: UserService, private route: ActivatedRoute, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.users = this.route.snapshot.data.users;
