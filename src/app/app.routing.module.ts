@@ -10,14 +10,21 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 
 export const appRoutes: Routes = [
-  {  path: 'login',  component: LoginComponent},
-  {  path: 'home',   component: HomeComponent},
   {  path: '',  redirectTo: '/home',  pathMatch: 'full' },
-  {  path: 'product', component: ProductComponent,
-   resolve: {
-      products: ProductResolver
-    }
+  {  path: 'login',  component: LoginComponent},
+  {  path: 'home',   component: HomeComponent,
+     children: [
+      {  
+        path: '', component: ProductComponent,
+        outlet: 'homeOutlet',
+        resolve: {
+          products: ProductResolver
+       }
+   },
+     ]
   },
+  
+  
   { path: 'dashboard',  component: DashboardComponent },
   { path: 'user', component: UserComponent,
     resolve: {

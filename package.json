@@ -25,6 +25,7 @@
     "@angular/platform-browser": "~8.2.2",
     "@angular/platform-browser-dynamic": "~8.2.2",
     "@angular/router": "~8.2.2",
+    "angular2-chartjs": "^0.5.1",
     "angular2-csv": "^0.2.9",
     "bootstrap": "^4.3.1",
     "core-js": "^3.2.1",
@@ -43,7 +44,7 @@
     "@angular/language-service": "~8.2.2",
     "@ngrx/store": "^8.2.0",
     "@types/jasmine": "~3.4.0",
-    "@types/jasminewd2": "~2.0.3",
+    "@types/jasminewd2": "^2.0.6",
     "@types/node": "~12.7.2",
     "angular-ide": "^0.9.65",
     "codelyzer": "~5.1.0",
@@ -54,8 +55,10 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "ngx-cookie-service": "^2.2.0",
     "protractor": "~5.4.2",
     "ts-node": "~8.3.0",
-    "tslint": "~5.19.0"
+    "tslint": "~5.19.0",
+    "webpack": "^4.39.3"
   }
 }
