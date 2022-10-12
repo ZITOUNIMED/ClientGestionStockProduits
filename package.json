@@ -33,7 +33,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "popper.js": "^1.15.0",
     "rxjs": "~6.5.2",
     "typescript": "~3.5.3",
